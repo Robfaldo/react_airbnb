@@ -12,6 +12,27 @@ class App extends Component {
     };
   }
 
+  // componentDidMount is a special function which is
+  // called by react when a component is ready to be
+  // displayed in the browser
+  componentDidMount() {
+    // fetch takes url as an argument and returns promise
+    fetch("https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/flats.json")
+      // THEN transform the response into a json object
+      .then(response => response.json())
+      // THEN take the information I get from the api and
+      // assign it to the component state
+      .then((data) => {
+        // this line sets the state of the component
+        this.setState({
+          // flats is what I want to update in the components state
+          // data is the value I want to give it
+          flats: data
+        })
+      });
+  }
+
+  // this.state is set in the constructor
   render() {
     return (
       <div className="app">
@@ -19,7 +40,6 @@ class App extends Component {
           <div className="search">
           </div>
           <div className="flats">
-          // this.state is set in the constructor 
             {this.state.flats.map((flat) => {
               return <Flat flat={flat} />
             })}
