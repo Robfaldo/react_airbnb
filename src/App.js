@@ -4,23 +4,23 @@ import './App.css';
 import Flat from './components/flat';
 
 class App extends Component {
-  render() {
-    const flat = {
-      "price": 500,
-      "priceCurrency": "£",
-      "imageUrl": "https://s.iha.com/6521800004976/Holiday-lettings-Florence-Flat-Apartments_4.jpeg",
-      "name": "Great flat"
+  constructor(props) {
+    // this line makes sure react still works
+    super(props);
+    this.state = {
+      flats: []
     };
+  }
 
-    const flats = [ flat, flat, flat, flat ];
-
+  render() {
     return (
       <div className="app">
         <div className="main">
           <div className="search">
           </div>
           <div className="flats">
-            {flats.map((flat) => {
+          // this.state is set in the constructor 
+            {this.state.flats.map((flat) => {
               return <Flat flat={flat} />
             })}
           </div>
