@@ -10,6 +10,18 @@
   flex-direction: column;
 }
 
+.search {
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.search input {
+  width: 100%;
+  height: 40px;
+  font-size: 24px;
+  color: #999;
+}
+
 .map {
   /* the map will take the space remaining */
   flex-grow: 1;

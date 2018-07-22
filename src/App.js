@@ -12,9 +12,13 @@ class App extends Component {
     super(props);
     this.state = {
       flats: [],
+      // allFlats never changes
+      allFlats: [],
       // when i start the application, I don't
       // want there to be any selected flat
-      selectFlat: null
+      selectFlat: null,
+      // search when you start is empty
+      search: ""
     };
   }
 
@@ -33,15 +37,27 @@ class App extends Component {
         this.setState({
           // flats is what I want to update in the components state
           // data is the value I want to give it
-          flats: data
+          flats: data,
+          allFlats: data
         })
       });
   }
 
   selectFlat = (flat) => {
-    console.log(flat)
     this.setState({
       selectedFlat: flat
+    });
+  }
+
+  // handleSearch will be an event that gets
+  // logged every time
+  handleSearch = (event) => {
+    this.setState({
+      search: event.target.value,
+      flats: this.state.allFlats.filter(
+        (flat) => new RegExp(event.target.value, "i")
+        .exec(flat.name)
+      )
     });
   }
 
@@ -66,6 +82,11 @@ class App extends Component {
       <div className="app">
         <div className="main">
           <div className="search">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={this.state.search}
+              onChange={this.handleSearch} />
           </div>
           <div className="flats">
             {this.state.flats.map((flat) => {
