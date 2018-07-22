@@ -4,8 +4,13 @@
 
 .flat-picture {
   height: 200px;
+  /*  resize automatically */
+  background-size: cover;
+  /* picture will center automatically depending on size of div */
+  background-position: center;
 }
 
 .flat-title {
-
+  margin: 10px;
+  font-weight: bold;
 }
