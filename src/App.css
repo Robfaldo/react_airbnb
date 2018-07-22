@@ -1,4 +1,5 @@
 .app {
+  /* use flexbox for app container */
   display: flex;
 }
 
@@ -7,7 +8,6 @@
   flex-basis: 60%;
   display: flex;
   flex-direction: column;
-  background-color: red;
 }
 
 .map {
@@ -18,5 +18,13 @@
   top: 0;
   /* will be able to scroll the flats */
   position: sticky;
-  background-color: green;
+}
+
+.flats {
+  display: flex;
+  /* should span on multiple rows */
+  flex-wrap: wrap;
+  /* start content at the top (i.e. if there's only 1 flat then put it
+  at the top of the page and not in the middle) */
+  align-content: flex-start;
 }

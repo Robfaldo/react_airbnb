@@ -1,5 +1,8 @@
 .flat {
-
+  /* each card will take 50% of the space of the flexbox, i.e. 2 cards per line */
+  /* 50% is for how much of the card, minus 20px, which will be the margin */
+  flex-basis: calc(50% - 20px);
+  margin: 10px;
 }
 
 .flat-picture {
