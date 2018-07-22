@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 // import logo from './logo.svg';
 import './App.css';
 import Flat from './components/flat';
+import Marker from './components/marker'
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class App extends Component {
   // this.state is set in the constructor
   render() {
       // I use this inside the map div because its
-      // used by GoogleMapReact for where to center the map 
+      // used by GoogleMapReact for where to center the map
       const center = {
         lat: 48.8566,
         lng: 2.3522
@@ -56,9 +57,13 @@ class App extends Component {
         </div>
         <div className="map">
           <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyD5zl80idoE-5Wcs3opYzv3miodl0BVwFM" }}
             center={center}
             zoom={11}
           >
+          {this.state.flats.map((flat) => {
+            return <Marker lat={flat.lat} lng={flat.lng} text={flat.price} />
+          })}
           </GoogleMapReact>
         </div>
       </div>
